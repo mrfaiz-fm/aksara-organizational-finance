@@ -1018,7 +1018,8 @@ function populateOptions() {
       !availableBudgets.length;
 
     elements.realizationButton.hidden =
-      !canManageBudget();
+      !canManageBudget() ||
+      document.body.dataset.view !== 'activity';
   }
 
   const bottomButton =
@@ -1696,14 +1697,11 @@ yearSelect.innerHTML =
    MODALS
 ========================================================= */
 
-document.querySelector(
-  '#open-budget-modal'
-).addEventListener(
+document.querySelector('#open-budget-modal').addEventListener(
   'click',
-  () =>
-    openDialog(
-      'budget-modal'
-    )
+  () => {
+    openDialog('budget-modal');
+  }
 );
 
 document.querySelector(
@@ -2002,22 +2000,27 @@ document.querySelectorAll(
         ).textContent =
           content.subtitle;
 
-        const primaryAction =
-          document.querySelector(
+        const primaryAction = document.querySelector(
             '#open-budget-modal'
           );
 
+        const realizationButton = document.querySelector(
+             '#open-realization-modal'
+          );
         if (primaryAction) {
           primaryAction.hidden =
-            !canManageBudget();
+            !canManageBudget() || view === 'activity';
+        }
+
+        if (elements.realizationButton) {
+          elements.realizationButton.hidden =
+            !canManageBudget() || view !== 'activity';
         }
 
         document.querySelector(
           '#page-action-label'
-        ).textContent =
-          view === 'activity'
-            ? 'Catat realisasi'
-            : 'Tambah anggaran';
+        ).textContent = 'Tambah anggaran';
+   
 
         window.scrollTo({
           top: 0,

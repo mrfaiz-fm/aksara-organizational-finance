@@ -91,10 +91,21 @@
             <h1 id="page-title">Dashboard Anggaran</h1>
             <p class="heading-subtitle" id="page-subtitle">Pantau pagu, realisasi, dan saldo keuangan organisasi.</p>
           </div>
-          <button class="button button-primary" id="open-budget-modal" type="button">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            <span id="page-action-label">Tambah anggaran</span>
-          </button>
+         <div class="page-heading-actions" style="display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap">
+            <button class="button button-primary" id="open-budget-modal" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+              <span id="page-action-label">Tambah anggaran</span>
+            </button>
+
+            <button class="button button-outline" id="open-realization-modal" type="button" disabled hidden>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+              <span>Catat realisasi</span>
+            </button>
+          </div>
         </section>
 
         <section class="metrics-grid" aria-label="Ikhtisar keuangan">
@@ -164,10 +175,6 @@
         <section class="panel activity-section" id="activity">
           <div class="panel-heading section-heading">
             <div><p class="eyebrow">ARUS KAS KELUAR</p><h2>Realisasi terbaru</h2></div>
-            <button class="button button-outline" id="open-realization-modal" type="button" disabled>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-              <span>Catat realisasi</span>
-            </button>
           </div>
           <div class="table-wrap">
             <table class="realization-table">
